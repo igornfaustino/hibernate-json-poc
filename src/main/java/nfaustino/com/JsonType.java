@@ -16,7 +16,7 @@ import org.hibernate.usertype.UserType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class DataJson implements UserType {
+public class JsonType implements UserType {
     private static final ObjectMapper Mapper = new ObjectMapper();
 
     @Override
@@ -79,7 +79,6 @@ public class DataJson implements UserType {
 
     @Override
     public Object deepCopy(Object value) throws HibernateException {
-        System.out.println("hello");
         try {
             byte[] bytes = Mapper.writeValueAsBytes(value);
             return Mapper.readTree(bytes);

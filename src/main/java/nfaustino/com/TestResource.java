@@ -22,7 +22,6 @@ public class TestResource {
         em.persist(entity);
 
         MyEntity savedEntity = em.find(MyEntity.class, entity.getId());
-        System.out.println(savedEntity.getFieldJson().getStringProp());
         return savedEntity;
     }
 }

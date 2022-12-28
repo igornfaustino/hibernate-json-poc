@@ -10,7 +10,6 @@ import org.hibernate.dialect.PostgreSQL10Dialect;
 public class JsonPostgresDialect extends PostgreSQL10Dialect {
 
     public JsonPostgresDialect() {
-        System.out.println("oi");
         this.registerColumnType(Types.JAVA_OBJECT, "json");
     }
 }

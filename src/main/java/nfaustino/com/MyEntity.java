@@ -9,7 +9,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 @Entity
-@TypeDef(name = "dataJsonb", typeClass = DataJson.class)
+@TypeDef(name = "dataJsonb", typeClass = JsonType.class)
 public class MyEntity {
     @Id
     @GeneratedValue

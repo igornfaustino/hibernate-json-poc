@@ -1,35 +1,24 @@
 package nfaustino.com;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-/**
- * Example JPA entity.
- *
- * To use it, get access to a JPA EntityManager via injection.
- *
- * {@code
- * @Inject
- * EntityManager em;
- *
- * public void doSomething() {
- * MyEntity entity1 = new MyEntity();
- * entity1.setField("field-1");
- * em.persist(entity1);
- *
- * List<MyEntity> entities = em.createQuery("from MyEntity",
- * MyEntity.class).getResultList();
- * }
- * }
- */
-@Entity
-public class MyEntity {
-    private Long id;
-    private String field;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
+@Entity
+@TypeDef(name = "dataJsonb", typeClass = DataJson.class)
+public class MyEntity {
     @Id
     @GeneratedValue
+    private Long id;
+
+    @Column()
+    @Type(type = "dataJsonb")
+    private Data fieldJson;
+
     public Long getId() {
         return id;
     }
@@ -38,11 +27,11 @@ public class MyEntity {
         this.id = id;
     }
 
-    public String getField() {
-        return field;
+    public Data getFieldJson() {
+        return fieldJson;
     }
 
-    public void setField(String field) {
-        this.field = field;
+    public void setFieldJson(Data field) {
+        this.fieldJson = field;
     }
 }
